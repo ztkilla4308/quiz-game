@@ -3,7 +3,8 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
     height: 650px;
     background-color: #4C6793;
     border-radius: 15px;

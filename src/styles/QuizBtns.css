@@ -8,7 +8,8 @@
 }
 .quiz-btn{
     background-color: #5f2489;
-    width: 200px;
+    width: 100%;
+    max-width: 200px;
     height: 50px;
     border: 0;
     border-radius: 15px;
