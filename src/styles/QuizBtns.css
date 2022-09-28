@@ -1,0 +1,25 @@
+.quiz-btn-container{
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+.quiz-btn{
+    background-color: #5f2489;
+    width: 200px;
+    height: 50px;
+    border: 0;
+    border-radius: 15px;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    transition-duration: 0.2s;
+}
+.quiz-btn.wrong{
+    background-color: rgb(196, 11, 11);
+}
+.quiz-btn.correct{
+    background-color: rgb(9, 164, 9);
+}

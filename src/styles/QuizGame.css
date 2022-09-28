@@ -1,0 +1,16 @@
+.main-game{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 500px;
+    height: 650px;
+    background-color: #4C6793;
+    border-radius: 15px;
+}
+.main-game img{
+    padding-top: 100px;
+    width: 100%;
+    max-width: 350px;
+    max-height: 300px;
+}
