@@ -48,16 +48,25 @@ function App() {
     setReady(true)
   }
   function submitButton(x) {
+    const quizButtons = document.querySelectorAll('.quiz-btn')
+    quizButtons.forEach((button) => (button.disabled = true))
     if (x.target.value === 'correct') {
       setGamePoints(gamePoints + 2)
-      x.target.classList.add('correct')
     } else {
       setGamePoints(gamePoints - 1)
-      x.target.classList.add('wrong')
     }
+    quizButtons.forEach((button) => {
+      if (button.value === 'correct') {
+        button.classList.add('correct')
+      } else {
+        button.classList.add('wrong')
+      }
+    })
     const timer = setTimeout(() => {
-      x.target.classList.remove('wrong')
-      x.target.classList.remove('correct')
+      quizButtons.forEach((button) =>
+        button.classList.remove('correct', 'wrong')
+      )
+      quizButtons.forEach((button) => (button.disabled = false))
       GetGameData(gameInfo)
     }, 1500)
   }

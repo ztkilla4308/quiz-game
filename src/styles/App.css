@@ -5,11 +5,13 @@
 }
 #root{
     background-color: black;
+    height: 100vh;
 }
 .App{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
