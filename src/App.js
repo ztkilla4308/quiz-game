@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Loading from './components/Loading'
 import MainScreen from './components/MainScreen'
-import QuizGame from './components/QuizGame'
 import './styles/App.css'
 
 function App() {
@@ -76,7 +75,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" index element={<MainScreen />} />
+        <Route index path="/quiz-game" element={<MainScreen />} />
         <Route
           path="/game"
           element={
@@ -90,14 +89,6 @@ function App() {
           }
         />
       </Routes>
-      {/* {ready ? (
-        <QuizGame
-          
-        />
-      ) : (
-        <h3>Game loading....</h3>
-      )}
-      <h3>{gamePoints}</h3> */}
     </div>
   )
 }
