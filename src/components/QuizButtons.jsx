@@ -3,7 +3,7 @@ import '../styles/QuizBtns.css'
 
 function QuizButtons({list, func}) {
     function submitButton(x){
-        func(x)
+        func(x, list)
     }
     return (
         <div className='quiz-btn-container'>
@@ -12,7 +12,6 @@ function QuizButtons({list, func}) {
                 <button
                 className='quiz-btn'
                 key={index}
-                value={button.value}
                 children={button.name}
                 onClick={submitButton}
                 ></button>

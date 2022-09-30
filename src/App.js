@@ -49,18 +49,23 @@ function App() {
     setButtonsList(quizData)
     setReady(true)
   }
-  function submitButton(x) {
+  function submitButton(x, list) {
     const quizButtons = document.querySelectorAll('.quiz-btn')
     quizButtons.forEach((button) => (button.disabled = true))
     x.target.style.transform = 'scale(1.07)'
     x.target.style.border = '3px solid white'
-    if (x.target.value === 'correct') {
+
+    if (
+      x.target.innerHTML === list.find((iter) => iter.value == 'correct').name
+    ) {
       setGamePoints(gamePoints + 2)
     } else {
       setGamePoints(gamePoints - 1)
     }
     quizButtons.forEach((button) => {
-      if (button.value === 'correct') {
+      if (
+        button.innerHTML === list.find((iter) => iter.value == 'correct').name
+      ) {
         button.classList.add('correct')
       } else {
         button.classList.add('wrong')
