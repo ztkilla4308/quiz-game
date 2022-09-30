@@ -1,5 +1,5 @@
 .game-points{
-    background-color: #3d5a89;
+    background-color: #1f4068;
     max-height: 100px;
     border-radius: 15px 15px 0 0;
     padding: 25px;
@@ -14,3 +14,4 @@
     gap: 10px;
     color: white;
 }
+

@@ -52,6 +52,8 @@ function App() {
   function submitButton(x) {
     const quizButtons = document.querySelectorAll('.quiz-btn')
     quizButtons.forEach((button) => (button.disabled = true))
+    x.target.style.transform = 'scale(1.07)'
+    x.target.style.border = '3px solid white'
     if (x.target.value === 'correct') {
       setGamePoints(gamePoints + 2)
     } else {
@@ -69,6 +71,8 @@ function App() {
         button.classList.remove('correct', 'wrong')
       )
       quizButtons.forEach((button) => (button.disabled = false))
+      x.target.style.border = 'none'
+      x.target.style.transform = 'scale(1)'
       GetGameData(gameInfo)
     }, 1500)
   }
