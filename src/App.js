@@ -10,40 +10,55 @@ function App() {
   const [ready, setReady] = useState(false)
   const [buttonsList, setButtonsList] = useState('')
   const [gamePoints, setGamePoints] = useState(0)
+  const [gameSettings, setGameSettings] = useState('')
   async function fetchCountries() {
     const response = await fetch('https://restcountries.com/v3.1/all').then(
       (res) => res.json()
     )
     setGameInfo(response)
-    await GetGameData(response)
+  }
+  function startGame() {
+    if (ready) {
+      GetGameData(gameInfo)
+    } else {
+      setTimeout(() => {
+        GetGameData(gameInfo)
+      }, 2000)
+    }
   }
   const game = useEffect(() => {
     fetchCountries()
   }, [])
   async function GetGameData(response) {
-    let random = Math.floor(Math.random() * 245)
+    let newResponse
+    if (gameSettings != '') {
+      newResponse = response.filter((str) => str.continents[0] === gameSettings)
+    } else {
+      newResponse = response
+    }
+    let random = Math.floor(Math.random() * (newResponse.length - 3))
+    console.log(newResponse)
     const gameData = {
-      country: response[random].flags.png,
+      country: newResponse[random].flags.png,
       info: [
         {
           value: 'correct',
-          name: response[random].name.common,
+          name: newResponse[random].name.common,
         },
         {
           value: 'wrong',
-          name: response[random + 1].name.common,
+          name: newResponse[random + 1].name.common,
         },
         {
           value: 'wrong',
-          name: response[random + 2].name.common,
+          name: newResponse[random + 2].name.common,
         },
         {
           value: 'wrong',
-          name: response[random + 3].name.common,
+          name: newResponse[random + 3].name.common,
         },
       ],
     }
-
     const quizData = gameData.info.sort(() => Math.random() - 0.5)
     setGameFlag(gameData.country)
     setButtonsList(quizData)
@@ -54,7 +69,6 @@ function App() {
     quizButtons.forEach((button) => (button.disabled = true))
     x.target.style.transform = 'scale(1.07)'
     x.target.style.border = '3px solid white'
-
     if (
       x.target.innerHTML === list.find((iter) => iter.value == 'correct').name
     ) {
@@ -81,10 +95,19 @@ function App() {
       GetGameData(gameInfo)
     }, 1500)
   }
+  function gameSettingsFunc(x) {
+    setGameSettings(x.target.value)
+  }
   return (
     <div className="App">
       <Routes>
-        <Route index path="/quiz-game" element={<MainScreen />} />
+        <Route
+          index
+          path="/quiz-game"
+          element={
+            <MainScreen settingsFunc={gameSettingsFunc} start={startGame} />
+          }
+        />
         <Route
           path="/game"
           element={
