@@ -103,7 +103,7 @@ function App() {
       <Routes>
         <Route
           index
-          path="/quiz-game"
+          path="*"
           element={
             <MainScreen settingsFunc={gameSettingsFunc} start={startGame} />
           }
@@ -112,6 +112,7 @@ function App() {
           path="/game"
           element={
             <Loading
+              start={startGame}
               ready={ready}
               gameFlag={gameFlag}
               buttonList={buttonsList}

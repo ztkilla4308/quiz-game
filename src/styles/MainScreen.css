@@ -69,11 +69,16 @@
 .settings{
     z-index: 5;
     position: absolute;
-    margin-top: 100px;
+    bottom: 0;
     max-width: 200px;
+    margin-bottom: 50px;
     width: 100%;
     padding: 7px 15px;
     border: 0;
     border-radius: 5px;
     background-color: #e43f5a;
+    color: white;
+}
+.loading{
+    color: white;
 }
